@@ -1,22 +1,15 @@
-import nodemailer from "nodemailer";
+import {Resend} from "resend";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendConfirmationEmail = async (email, confirmToken) => {
   const confirmUrl = `${process.env.BASE_URL}/api/confirm/${confirmToken}`;
 
-  await transporter.sendMail({
-    from: `"GitHub Release Tracker" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: "GitHub Release Tracker <onboarding@resend.dev>",
     to: email,
     subject: "Confirm your subscription",
     html: `
@@ -44,8 +37,8 @@ export const sendConfirmationEmail = async (email, confirmToken) => {
 export const sendReleaseNotification = async (email, repo, tag) => {
   const releaseUrl = `https://github.com/${repo}/releases/tag/${tag}`;
 
-  await transporter.sendMail({
-    from: `"GitHub Release Tracker" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: "GitHub Release Tracker <onboarding@resend.dev>",
     to: email,
     subject: `New release ${tag} in ${repo}`,
     html: `
