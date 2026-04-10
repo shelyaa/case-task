@@ -79,7 +79,7 @@ export const unsubscribeSubscription = async (token) => {
 
 export const getSubscriptionsByEmail = async (email) => {
   const result = await pool.query(
-    `SELECT id, email, repo, created_at 
+    `SELECT id, email, repo, created_at, unsubscribe_token
      FROM subscriptions 
      WHERE email = $1 AND confirmed = true`,
     [email],
