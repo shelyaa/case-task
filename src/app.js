@@ -1,5 +1,6 @@
 import express from "express";
 import subscriptionRoutes from "./routes/subscriptions.js";
+import cors from "cors";
 
 const app = express();
 
