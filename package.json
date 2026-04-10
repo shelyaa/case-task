@@ -1,0 +1,36 @@
+{
+  "name": "case-task",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config src/server.js dotenv_config_path=.env",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:unit": "node --experimental-vm-modules node_modules/.bin/jest src/tests/unit",
+    "test:integration": "node --experimental-vm-modules node_modules/.bin/jest src/tests/integration"
+  },
+   "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.15.0",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "jest": "^30.3.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.5",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "babel-jest": "^30.3.0"
+  }
+}
