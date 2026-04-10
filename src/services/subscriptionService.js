@@ -11,7 +11,11 @@ export const createSubscription = async (email, repo) => {
   }
 
   try {
-    await axios.get(`https://api.github.com/repos/${repo}`);
+    await axios.get(`https://api.github.com/repos/${repo}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
+    });
   } catch (err) {
     if (err.response?.status === 404) {
       const error = new Error("Repository not found");
