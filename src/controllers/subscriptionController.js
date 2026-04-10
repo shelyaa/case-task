@@ -9,6 +9,8 @@ import {sendConfirmationEmail} from "../services/emailService.js";
 export const subscribe = async (req, res) => {
   const {email, repo} = req.body;
 
+  console.log("Subscribe request:", { email, repo });
+
   if (!email || !repo) {
     return res.status(400).json({error: "Email and repo are required"});
   }
@@ -16,13 +18,12 @@ export const subscribe = async (req, res) => {
   try {
     const {confirmToken} = await createSubscription(email, repo);
     await sendConfirmationEmail(email, confirmToken);
-
     return res.status(200).json({message: "Confirmation email sent"});
   } catch (err) {
+    console.error("Subscribe error:", err); 
     return res.status(err.status || 500).json({error: err.message});
   }
 };
-
 export const confirm = async (req, res) => {
   const {token} = req.params;
 
