@@ -2,7 +2,7 @@ import app from "./app.js";
 import {migrate} from "./db/migrations.js";
 import { startScanner } from "./services/scannerService.js";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const start = async () => {
   await migrate();

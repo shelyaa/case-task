@@ -9,8 +9,6 @@ import {sendConfirmationEmail} from "../services/emailService.js";
 export const subscribe = async (req, res) => {
   const {email, repo} = req.body;
 
-  console.log("Subscribe request:", { email, repo });
-
   if (!email || !repo) {
     return res.status(400).json({error: "Email and repo are required"});
   }
