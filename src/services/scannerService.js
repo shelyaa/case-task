@@ -40,7 +40,7 @@ export const checkReleases = async () => {
           [repo, latestTag],
         );
       }
-    } catch (err) {}
+    } catch {}
   }
 };
 

@@ -10,7 +10,7 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:unit": "node --experimental-vm-modules node_modules/.bin/jest src/tests/unit",
     "test:integration": "node --experimental-vm-modules node_modules/.bin/jest src/tests/integration",
-     "lint": "eslint src/"
+    "lint": "eslint src/"
   },
   "jest": {
     "testEnvironment": "node",
