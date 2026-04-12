@@ -18,7 +18,6 @@ export const subscribe = async (req, res) => {
     await sendConfirmationEmail(email, confirmToken);
     return res.status(200).json({message: "Confirmation email sent"});
   } catch (err) {
-    console.error("Subscribe error:", err); 
     return res.status(err.status || 500).json({error: err.message});
   }
 };
